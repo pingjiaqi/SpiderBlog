@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--命名空间是对应接口的包名+类名 -->
+<mapper namespace="com.pjq.dao.UserDao">
+    <insert id="insertIntoUser"  parameterType="String">
+        insert into user(username,password) value (#{username},#{password})
+    </insert>
+
+    <select id="selectByName" parameterType="String" resultType="com.pjq.pojo.User">
+        select * from user where username=#{username}
+    </select>
+</mapper>

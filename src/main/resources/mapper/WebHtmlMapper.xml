@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--命名空间是对应接口的包名+类名 -->
+<mapper namespace="com.pjq.dao.WebHtmlDao">
+
+<!--    <resultMap id="BaseResultMap" type="com.pjq.pojo.WebHtml">-->
+<!--        <id column="id" property="id" jdbcType="INTEGER"/>-->
+<!--        <result column="website_id" property="websiteId" jdbcType="INTEGER"/>-->
+<!--        <result column="list_html_1" property="listHtml1" jdbcType="VARCHAR"/>-->
+<!--        <result column="list_html_2" property="listHtml2" jdbcType="VARCHAR"/>-->
+<!--        <result column="title_html" property="titleHtml" jdbcType="VARCHAR"/>-->
+<!--        <result column="artical_html" property="articalHtml" jdbcType="VARCHAR"/>-->
+<!--        <result column="img_html" property="imgHtml" jdbcType="VARCHAR"/>-->
+<!--        <result column="time_html" property="timeHtml" jdbcType="VARCHAR"/>-->
+<!--        <result column="page_number_html" property="pageNumberHtml" jdbcType="VARCHAR"/>-->
+<!--        <result column="is_pagination" property="isPagination" jdbcType="INTEGER"/>-->
+<!--    </resultMap>-->
+
+<!--    <sql id="WebHtml_List">-->
+<!--		id, platform, version, update_log, gmt_create, gmt_modified, status, available, recommended, qrcode_obj-->
+<!--	</sql>-->
+    
+    <select id="selectAllHtml" parameterType="int" resultType="com.pjq.pojo.WebHtml">
+        select
+        *
+        from website_html
+        where website_id=#{websiteId}
+    </select>
+
+
+    
+</mapper>

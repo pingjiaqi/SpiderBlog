@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--命名空间是对应接口的包名+类名 -->
+<mapper namespace="com.pjq.dao.PushLogDao">
+
+    <insert id="insertLog" parameterType="java.util.List">
+        insert into push_log (push_log.content_id,push_log.push_times,push_log.lastes_time)
+        values
+        <foreach collection="contentList" item="push_log" index="index" separator=",">
+            (
+            #{push_log.content_id},
+            #{push_log.push_times},
+            #{push_log.lastes_time}
+            )
+        </foreach>
+    </insert>
+    <delete id="delect" parameterType="int">
+        DELETE
+        FROM push_log
+        WHERE content_id = #{content_id}
+    </delete>
+
+
+    <select id="selectTimes" parameterType="int" resultType="int">
+        select push_times
+        from push_log
+        where content_id = #{content_id}
+    </select>
+    <select id="selelAllLog" resultType="com.pjq.pojo.PushLog">
+        select * from push_log
+    </select>
+</mapper>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--命名空间是对应接口的包名+类名 -->
+<mapper namespace="com.pjq.dao.ContentDao">
+
+    <resultMap id="BaseResultMap" type="com.pjq.pojo.Content">
+<!--        <id column="id" property="id" jdbcType="INTEGER"/>-->
+<!--        <result column="content_id" property="contentId" jdbcType="INTEGER"/>-->
+<!--        <result column="title" property="title" jdbcType="VARCHAR"/>-->
+<!--        <result column="title_hashcode" property="titleHashCode" jdbcType="VARCHAR"/>-->
+<!--        <result column="description" property="description" jdbcType="VARCHAR"/>-->
+<!--        <result column="image" property="image" jdbcType="VARCHAR"/>-->
+<!--        <result column="url" property="url" jdbcType="VARCHAR"/>-->
+<!--        <result column="time" property="time" jdbcType="DATE"/>-->
+<!--        <result column="website_id" property="websiteId" jdbcType="INTEGER"/>-->
+    </resultMap>
+
+    <insert id="insertIntoContent" keyProperty="id">
+        insert into content(content_id,title,title_hashcode,description,image,url,time,website_id)
+        value (#{contentId},#{title},#{titleHashCode},#{description},#{image},#{url},#{time},#{websiteId})
+    </insert>
+
+    <insert id="insertIntoID">
+        insert into content(content_id)
+        value (#{id})
+    </insert>
+
+    <select id="selectContent" parameterType="String" resultType="String">
+        select title from content where title=#{title}
+    </select>
+
+    <select id="selectHashCode" parameterType="int" resultType="com.pjq.pojo.Content">
+        select * from content where title_hashcode=#{titleHashCode}
+    </select>
+
+    <insert id="insertWebSiteId" parameterType="int">
+        insert into content(website_id) value(#{website_id})
+    </insert>
+
+    <select id="selectAllContent" resultType="com.pjq.pojo.Content">
+            select * from content
+    </select>
+
+    <select id="selectsome" parameterType="String" resultType="String">
+        select title from content where title like #{title} limit 1
+    </select>
+</mapper>
